@@ -1,0 +1,12 @@
+COMPILE backend/app/plate_detector.py: OK
+COMPILE backend/app/plate_localizer.py: OK
+COMPILE backend/app/tracker.py: OK
+COMPILE backend/edge_pipeline.py: OK
+COMPILE backend/app/main.py: OK
+COMPILE backend/scripts/download_plate_model.py: OK
+COMPILE backend/test_plate_detection.py: OK
+--- SYNTHETIC PLATE TEST ---
+[NORMAL] plate 220x60 -> [{'bbox': [530, 330, 750, 390], 'plate_bbox': [530, 330, 750, 390], 'vehicle_bbox': None, 'kind': 'plate', 'plate_text': 'UP32KT2112', 'confidence': 0.92, 'detection_conf': 0.8999999761581421}] | valid+conf>=0.35: True
+[SMALL] plate 90x28 -> [{'bbox': [595, 346, 685, 374], 'plate_bbox': [595, 346, 685, 374], 'vehicle_bbox': None, 'kind': 'plate', 'plate_text': 'UP32KT2112', 'confidence': 0.92, 'detection_conf': 0.8999999761581421}] | valid+conf>=0.35: True
+PASS: synthetic plate reads are valid with conf >= 0.35
+EXIT=0

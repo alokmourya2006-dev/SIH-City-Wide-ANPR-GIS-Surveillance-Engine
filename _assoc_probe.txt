@@ -1,0 +1,2 @@
+PLATE_IN_CAR_BOX -> vehicle_type = CAR
+VEHICLE_BBOX = [100, 200, 500, 420]

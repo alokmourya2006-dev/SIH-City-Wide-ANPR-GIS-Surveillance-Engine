@@ -1,0 +1,10 @@
+Listing files in alok20262006/yolov8-license-plate-detection-bucket ...
+API LIST WARN HTTPError: HTTP Error 404: Not Found
+no .pt in listing (or list blocked) -> trying defaults ['best.pt', 'license-plate-finetune-v1n.pt', 'license-plate-finetune-v1s.pt']
+GET https://huggingface.co/alok20262006/yolov8-license-plate-detection-bucket/resolve/main/best.pt
+WARN HTTPError: HTTP Error 404: Not Found
+GET https://huggingface.co/alok20262006/yolov8-license-plate-detection-bucket/resolve/main/license-plate-finetune-v1n.pt
+WARN HTTPError: HTTP Error 404: Not Found
+GET https://huggingface.co/alok20262006/yolov8-license-plate-detection-bucket/resolve/main/license-plate-finetune-v1s.pt
+WARN HTTPError: HTTP Error 404: Not Found
+FAILED. Checklist: token starts hf_, has Read, you accepted repo terms / were granted access.

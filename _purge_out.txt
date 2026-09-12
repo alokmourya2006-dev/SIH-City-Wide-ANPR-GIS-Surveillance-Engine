@@ -1,0 +1,27 @@
+--- BEFORE PURGE ---
+  telemetry_logs: 28 rows
+  tracklets: 0 rows
+  alerts: 1 rows
+  hotlist: 4 rows
+  security_audit_logs: 41 rows
+  cameras: 6 rows
+--- PURGING ---
+  DELETED 28 rows from telemetry_logs
+  DELETED 1 rows from alerts
+  DELETED 0 rows from tracklets
+  SKIP audit_logs (table not found)
+  VACUUM OK
+--- AFTER PURGE ---
+  telemetry_logs: 0 rows
+  tracklets: 0 rows
+  alerts: 0 rows
+  hotlist: 4 rows
+  security_audit_logs: 41 rows
+  cameras: 6 rows
+--- API HEALTH ---
+LOGIN: 200
+ALERTS: 200 total=0
+CAMERA STATUS: 200 total=6
+TRACKLETS: 200 total=0
+--- KEEPING (config) ---
+  users, hotlist, cameras registry: untouched

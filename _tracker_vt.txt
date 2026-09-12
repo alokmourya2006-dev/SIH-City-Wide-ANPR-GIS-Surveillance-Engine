@@ -1,0 +1,2 @@
+CLOSED = [{'track_id': 1, 'plate_text': 'UP32KT2112', 'confidence': 0.9, 'vehicle_type': 'MOTORCYCLE', 'start_time': '2026-01-01T00:00:00', 'end_time': '2026-01-01T00:00:00', 'observations': 1}]
+VEHICLE_TYPE_FROM_TRACKLET = MOTORCYCLE

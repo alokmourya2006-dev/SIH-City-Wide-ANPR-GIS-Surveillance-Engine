@@ -1,0 +1,35 @@
+TOTAL ALERTS: 10
+--- GROUPED (type, plate, count) ---
+  HOTLIST_MATCH | UP32KT2112 | x7
+  HOTLIST_MATCH | DL8CAF1234 | x3
+--- LAST 10 ALERTS ---
+  #10 [HIGH] HOTLIST_MATCH plate=DL8CAF1234 cam=CAM_LKO_CHARBAGH_02 ts=2026-09-09T10:05:00Z
+      msg: Hotlist match: Wanted in hit-and-run case
+  #9 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_HAZRATGANJ_01 ts=2026-09-09T10:00:00Z
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+  #8 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_GOMTINAGAR_04 ts=2026-09-09T14:39:49.574114
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+  #7 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_ALAMBAGH_03 ts=2026-09-09T14:39:47.557909
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+  #6 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_CHARBAGH_02 ts=2026-09-09T14:39:45.540824
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+  #5 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_HAZRATGANJ_01 ts=2026-09-09T14:39:43.514689
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+  #4 [HIGH] HOTLIST_MATCH plate=DL8CAF1234 cam=CAM_LKO_CHARBAGH_02 ts=2026-09-09T10:05:00Z
+      msg: Hotlist match: Wanted in hit-and-run case
+  #3 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_HAZRATGANJ_01 ts=2026-09-09T10:00:00Z
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+  #2 [HIGH] HOTLIST_MATCH plate=DL8CAF1234 cam=CAM_LKO_CHARBAGH_02 ts=2026-09-09T10:05:00Z
+      msg: Hotlist match: Wanted in hit-and-run case
+  #1 [CRITICAL] HOTLIST_MATCH plate=UP32KT2112 cam=CAM_LKO_HAZRATGANJ_01 ts=2026-09-09T10:00:00Z
+      msg: Hotlist match: Stolen vehicle - FIR #112/2026
+TOTAL TELEMETRY ROWS: 22
+--- TOP PLATES (telemetry) ---
+  'UP32KT2112' x9
+  'DL8CAF1234' x4
+  'FJ21V0202' x1
+  'UP32070202' x1
+  'UP32IT212' x1
+  'UP32K12112' x1
+  'UPA2AV0202' x1
+  'UPIZIIN' x1

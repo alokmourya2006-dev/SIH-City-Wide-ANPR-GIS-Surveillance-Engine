@@ -1,0 +1,22 @@
+DEDUPED ALERTS: 5 duplicate rows removed
+ALERTS REMAINING: 5
+  #10 [HIGH] DL8CAF1234 | Hotlist match: Wanted in hit-and-run case | 2026-09-09T10:05:00Z
+  #9 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T10:00:00Z
+  #8 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T14:39:49.574114
+  #7 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T14:39:47.557909
+  #6 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T14:39:45.540824
+GARBAGE TELEMETRY (<4 chars): 0 rows removed
+COMPILE backend/app/main.py: OK
+COMPILE backend/edge_pipeline.py: OK
+OLD BACKEND KILLED
+BACKEND RESTARTED
+BACKEND HEALTHY after ~2s
+INGEST #1: 200 created=True suppressed=False
+INGEST #2 (same plate, 10min window): 200 created=False suppressed=True
+ALERTS LIST: total=6 (newest first)
+  #11 [CRITICAL] UP32KT2112 | Stolen vehicle - FIR #112/2026 — sighted at Hazratganj Crossing | 2026-09-09T16:57:50.442621
+  #10 [HIGH] DL8CAF1234 | Hotlist match: Wanted in hit-and-run case | 2026-09-09T10:05:00Z
+  #9 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T10:00:00Z
+  #8 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T14:39:49.574114
+  #7 [CRITICAL] UP32KT2112 | Hotlist match: Stolen vehicle - FIR #112/2026 | 2026-09-09T14:39:47.557909
+RESULT: DEDUPE VERIFIED

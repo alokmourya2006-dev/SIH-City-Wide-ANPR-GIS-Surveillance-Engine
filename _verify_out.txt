@@ -1,0 +1,16 @@
+COMPILE backend/app/main.py: OK
+COMPILE backend/app/stream_manager.py: OK
+COMPILE backend/app/models.py: OK
+COMPILE backend/edge_pipeline.py: OK
+SERVER 8000: UP (200)
+--- SMOKE TEST ---
+1. LOGIN OK
+2. REGISTER -> 200 {'status': 'success', 'camera_id': 'CAM_TEST_SMOKE_99', 'registered': False}
+3. HEARTBEAT -> 200 {'status': 'success', 'camera_id': 'CAM_LKO_HAZRATGANJ_01', 'last_heartbeat': '2026-09-09T16:34:13.203008'}
+4. FRAME PUSH -> 200 {'status': 'success', 'camera_id': 'CAM_LKO_HAZRATGANJ_01', 'bytes': 677}
+5. STREAM -> 200 multipart/x-mixed-replace; boundary=frame
+   stream bytes received: 737 | multipart OK: True
+6. STATUS -> 200 | HAZRATGANJ: ONLINE stream_available: True | total cameras: 5
+7. STATUS values: ['ONLINE', 'STANDBY']
+ALL SMOKE TESTS PASSED
+FRONTEND 5173: UP (200)

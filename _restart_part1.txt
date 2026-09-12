@@ -1,0 +1,11 @@
+COMPILE backend/app/main.py: OK
+COMPILE backend/app/plate_detector.py: OK
+COMPILE backend/app/plate_localizer.py: OK
+COMPILE backend/app/tracker.py: OK
+COMPILE backend/edge_pipeline.py: OK
+No stale process on port 8000
+KILLED PID 17512 on port 5173
+STARTING backend: python -m uvicorn main:app --host 127.0.0.1 --port 8000
+backend Popen OK, log -> c:\Users\Alok maurya\OneDrive\Desktop\SIH 127\backend_restart.log
+STARTING frontend: npm run dev -- --host --port 5173
+frontend Popen OK, log -> c:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend_restart.log

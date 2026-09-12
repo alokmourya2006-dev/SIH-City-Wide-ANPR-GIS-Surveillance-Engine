@@ -1,0 +1,5 @@
+no HF_TOKEN (public repos don't need one)
+GET https://huggingface.co/Koushim/yolov8-license-plate-detection/resolve/main/best.pt
+saved license-plate-finetune-v1n.pt (6248291 bytes)
+VALIDATE classes: {0: 'license_plate'}
+SUCCESS: restart edge -> expect '[INFO] Detector mode: plate'

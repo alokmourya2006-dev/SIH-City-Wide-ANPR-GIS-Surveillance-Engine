@@ -1,0 +1,4 @@
+﻿BACKEND :8000 -> DOWN <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+restarting backend...
+BACKEND UP (200)
+API docs http://127.0.0.1:8000/docs

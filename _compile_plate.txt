@@ -1,0 +1,5 @@
+COMPILE backend/app/plate_detector.py: OK
+COMPILE backend/app/plate_localizer.py: OK
+COMPILE backend/app/ocr_cleaner.py: OK
+COMPILE backend/edge_pipeline.py: OK
+COMPILE backend/scripts/download_plate_model.py: OK

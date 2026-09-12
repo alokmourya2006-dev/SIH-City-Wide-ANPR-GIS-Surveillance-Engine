@@ -1,0 +1,5 @@
+synthetic car+plate rendered (640x480, tilted plate, blur+noise)
+LOCALIZER candidates: 1
+  [95, 180, 245, 226] w=150 h=46
+OCR box (95, 180, 245, 226) -> 'UP32KT211' conf=0.96 valid=True
+RESULT: PLATE READ PATH WORKS (localizer+OCR produce a candidate)

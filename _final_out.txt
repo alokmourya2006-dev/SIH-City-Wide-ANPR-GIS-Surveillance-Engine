@@ -1,0 +1,15 @@
+--- FRONTEND BUILD ---
+(empty)
+--- EDGE PIPELINE LOG ---
+(empty)
+--- EDGE ERR ---
+Using CPU. Note: This module is much faster with a GPU.
+C:\Users\Alok maurya\AppData\Roaming\Python\Python314\site-packages\torch\ao\nn\quantized\dynamic\modules\rnn.py:162: UserWarning: torch.quantize_per_tensor, torch.quantize_per_channel and other quantized tensor creation functions that produce tensors with dtype torch.quint8, torch.qint8, and torch.qint32 are deprecated and will be removed in a future PyTorch release. Please see https://github.com/pytorch/pytorch/issues/184982 for more information. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\aten\src\ATen\quantized\Quantizer.cpp:116.)
+  w_ih = torch.quantize_per_tensor(
+C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\backend\edge_pipeline.py:184: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  timestamp = datetime.utcnow().isoformat() + "Z"
+--- PYTHON PROCESSES ---
+"C:\Python314\python.exe" -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+"C:\Python314\python.exe" edge_pipeline.py --camera-id CAM_LKO_HAZRATGANJ_01
+--- LIVE FRAME FLOW ---
+HAZRATGANJ -> status=OFFLINE stream_available=False hb=2026-09-09T16:34:13.245361

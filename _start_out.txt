@@ -1,0 +1,7 @@
+BACKEND :8000 -> DOWN
+starting backend...
+BACKEND UP (200)
+FRONTEND :5173 -> DOWN (stale log, restarting)
+frontend starting...
+FRONTEND UP (200)
+DASHBOARD http://localhost:5173/ | API http://127.0.0.1:8000/docs | LOGIN POLICE_7082/admin123

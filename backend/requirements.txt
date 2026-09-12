@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+opencv-python
+ultralytics
+easyocr
+requests
+asyncpg
+python-dotenv
+numpy
+scipy
+httpx
+pyjwt

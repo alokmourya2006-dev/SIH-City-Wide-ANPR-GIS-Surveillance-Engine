@@ -1,0 +1,6 @@
+--- FAST WEBCAM CHECK ---
+index 0: OPEN 640x480 frame=640x480 mean=156.0
+index 1: unavailable
+index 2: unavailable
+index 3: unavailable
+DONE. If index 0 OPEN with frame -> camera hardware OK, issue is detection/OCR tuning (fixed below).

@@ -1,0 +1,10 @@
+[INFO] Loading ARGUS Edge Perception Pipeline...
+[INFO] ARGUS Edge Node Active -> camera_id=CAM_LKO_HAZRATGANJ_01
+[INFO] Source: 0 | Debounce: 5.0s | Backend: http://127.0.0.1:8000/api/v1/telemetry/ingest
+[REGISTER] CAM_LKO_HAZRATGANJ_01 -> 401 None
+[INFO] Listen for video window. Show a license plate to camera. Press 'q' to quit.
+[TRACKLET #1 OK] Plate: UP32KT2112 | Conf: 0.20 | Obs: 1 | Hotlist: {'plate_number': 'UP32KT2112', 'reason': 'Stolen vehicle - FIR #112/2026', 'severity': 'CRITICAL'}
+[TRACKLET #2 OK] Plate: UP32KT2112 | Conf: 0.42 | Obs: 1 | Hotlist: {'plate_number': 'UP32KT2112', 'reason': 'Stolen vehicle - FIR #112/2026', 'severity': 'CRITICAL'}
+[TRACKLET #3 OK] Plate: UPHAM1IZ | Conf: 0.01 | Obs: 1 | Hotlist: None
+[TRACKLET #4 OK] Plate: UP32KT2112 | Conf: 0.45 | Obs: 1 | Hotlist: {'plate_number': 'UP32KT2112', 'reason': 'Stolen vehicle - FIR #112/2026', 'severity': 'CRITICAL'}
+[INFO] ARGUS Edge Pipeline stopped.

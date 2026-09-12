@@ -1,0 +1,6 @@
+﻿=== ARGUS Overview Startup ===
+Root: c:\Users\Alok maurya\OneDrive\Desktop\SIH 127
+Starting backend: cd 'c:\Users\Alok maurya\OneDrive\Desktop\SIH 127\backend\app'; python -m uvicorn main:app --host 127.0.0.1 --port 8000
+Starting frontend: cd 'c:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend'; npm run dev -- --host --port 5173
+
+Waiting 8s for servers to boot...

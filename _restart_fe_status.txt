@@ -1,0 +1,5 @@
+﻿BACKEND :8000 -> DOWN <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+FRONTEND :5173 -> DOWN <urlopen error [WinError 10061] No connection could be made because the target machine actively refused it>
+frontend starting, polling 60s...
+FRONTEND UP (200)
+DASHBOARD http://localhost:5173/ | API http://127.0.0.1:8000/docs

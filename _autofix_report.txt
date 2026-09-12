@@ -1,0 +1,13 @@
+=== PLATE-READ AUTOFIX ===
+models dir: c:\Users\Alok maurya\OneDrive\Desktop\SIH 127\backend\models -> (empty)
+ultralytics 8.4.142
+easyocr OK
+pytesseract absent (Tesseract fallback will stay dormant)
+tesseract binary: not on PATH
+no plate model -> downloading (this takes ~1-2 min)...
+GET https://huggingface.co/muhammad-arslan-chaudhary/yolo-v8-license-plate-detection/resolve/main/license-plate-finetune-v1s.pt
+WARN HTTPError: HTTP Error 401: Unauthorized
+GET https://huggingface.co/muhammad-arslan-chaudhary/yolo-v8-license-plate-detection/resolve/main/license-plate-finetune-v1n.pt
+WARN HTTPError: HTTP Error 401: Unauthorized
+DOWNLOAD FAILED (offline?) - code fallbacks (voting+Tesseract) still apply
+DONE

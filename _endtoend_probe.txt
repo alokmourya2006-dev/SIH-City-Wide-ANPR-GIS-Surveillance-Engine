@@ -1,0 +1,5 @@
+MODE = plate
+DETECT_RAN = True
+NUM_DETS = 0
+KEYS = n/a
+VEHICLE_TYPE_FIELD = n/a

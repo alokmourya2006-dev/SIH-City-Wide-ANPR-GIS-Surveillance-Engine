@@ -1,0 +1,9 @@
+COMPILE backend/app/plate_detector.py: OK
+COMPILE backend/edge_pipeline.py: OK
+COMPILE backend/app/plate_localizer.py: OK
+COMPILE backend/app/ocr_cleaner.py: OK
+GATES: floor=0.15 debug=0.08 votes>=2 grey_x3 variants<=7
+LOCALIZER candidates: 1
+OCR variants per crop: 7 (expect 7)
+SYNTHETIC READ -> 'UP32KT211' conf=1.00 valid=True candidate=True
+AUTOFIX COMPLETE: voting + sharpen/7-variants + grey-queue + Tesseract hook active

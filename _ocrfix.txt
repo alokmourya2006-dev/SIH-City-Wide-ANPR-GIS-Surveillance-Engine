@@ -1,0 +1,6 @@
+COMPILE backend/app/plate_detector.py: OK
+COMPILE backend/edge_pipeline.py: OK
+COMPILE backend/app/plate_localizer.py: OK
+COMPILE backend/app/ocr_cleaner.py: OK
+NOTE: full EasyOCR synthetic read already proven in _plateread.txt (UP32KT211 conf=0.96).
+EDGE: green = valid plate number | orange = raw OCR candidate number | yellow = vehicle, no text yet

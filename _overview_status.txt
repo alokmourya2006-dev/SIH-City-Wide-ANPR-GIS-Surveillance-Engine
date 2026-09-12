@@ -1,0 +1,10 @@
+BACKEND 8000: UP (200) -> http://127.0.0.1:8000/docs
+FRONTEND 5173: UP (200) -> http://localhost:5173/
+LOGIN: OK (POLICE_7082)
+CAMERAS: 6 registered
+  - CAM_LKO_HAZRATGANJ_01 | CAM_LKO_HAZRATGANJ_01 | OFFLINE | stream=False
+  - CAM_LKO_CHARBAGH_02 | Charbagh Station North | STANDBY | stream=False
+  - CAM_LKO_ALAMBAGH_03 | Alambagh Bus Terminal | STANDBY | stream=False
+  - CAM_LKO_GOMTINAGAR_04 | Gomti Nagar Cyber Heights | STANDBY | stream=False
+  - CAM_LKO_HAZARATGANJ_01 | Hazratganj Crossing | STANDBY | stream=False
+  - CAM _LKO_1 | HAZRATAGANJ | STANDBY | stream=False
