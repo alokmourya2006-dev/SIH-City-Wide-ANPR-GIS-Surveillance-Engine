@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Camera, Scan, Square, X } from 'lucide-react';
 import { publishDetection } from '../detectionBus';
-
-const API_BASE = 'http://127.0.0.1:8000';
+import { API_BASE, parseJsonResponse } from '../api';
 const norm = (p) => String(p || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 
 // Backend pixel bbox [x1,y1,x2,y2] -> % of frame (for overlay positioning)
@@ -130,7 +129,7 @@ const blackSet = useRef(new Set(blacklist.map(norm)));
         body: JSON.stringify({ image_base64: dataUrl.split(',')[1], camera_id: 'WEB_CAM_LIVE', vehicle_type: 'CAR' }),
         signal: ac.signal,
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       const elapsed = performance.now() - t0;
       if (!res.ok) throw new Error(data.detail || 'Live-frame detection failed');
 

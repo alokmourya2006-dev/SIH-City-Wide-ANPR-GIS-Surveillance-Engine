@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AlertTriangle, Plus, ShieldAlert, Trash2, X } from 'lucide-react';
-
-const API_BASE = 'http://127.0.0.1:8000';
+import { API_BASE, authFetch, parseJsonResponse } from '../api';
 
 const SEVERITIES = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
 
@@ -34,7 +33,7 @@ export default function WatchlistModal({ token, watchlist = [], onChanged, onClo
     const res = await fetch(`${API_BASE}/api/v1/hotlist`, {
       headers: { 'Authorization': `Bearer ${token}` },
     });
-    const data = await res.json();
+    const data = await parseJsonResponse(res);
     if (!res.ok) throw new Error(data.detail || 'Failed to load watchlist');
     onChanged(data.hotlist || []);
   }, [token, onChanged]);
@@ -56,7 +55,7 @@ export default function WatchlistModal({ token, watchlist = [], onChanged, onClo
           },
           body: JSON.stringify({ plate_number: cleanPlate, reason: reason.trim(), severity }),
         });
-        const data = await res.json();
+        const data = await parseJsonResponse(res);
         if (!res.ok) throw new Error(data.detail || 'Failed to add plate');
         await refresh();
       } else {
@@ -89,7 +88,7 @@ export default function WatchlistModal({ token, watchlist = [], onChanged, onClo
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` },
         });
-        const data = await res.json().catch(() => ({}));
+        const data = await parseJsonResponse(res).catch(() => ({}));
         if (!res.ok && res.status !== 404) throw new Error(data.detail || 'Failed to delete plate');
         await refresh();
       } else {

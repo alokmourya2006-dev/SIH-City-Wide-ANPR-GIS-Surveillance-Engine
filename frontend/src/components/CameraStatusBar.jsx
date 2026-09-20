@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, Wifi, WifiOff, Clock } from 'lucide-react';
-import { API_BASE, authFetch } from '../api';
+import { API_BASE, authFetch, parseJsonResponse } from '../api';
 
 // Convert raw ISO-8601 UTC timestamp into a readable IST capture time
 const formatCaptureTime = (iso) => {
@@ -31,7 +31,7 @@ export default function CameraStatusBar({ token, refreshTrigger }) {
       const res = await authFetch(`${API_BASE}/api/v1/cameras/status`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) throw new Error(data.detail || 'Failed to fetch camera status');
       setCameras(data.cameras || []);
     } catch (err) {

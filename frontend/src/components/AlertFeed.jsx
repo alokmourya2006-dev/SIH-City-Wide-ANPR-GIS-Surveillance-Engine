@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bell } from 'lucide-react';
+import { API_BASE, authFetch, parseJsonResponse } from '../api';
 
 const SEVERITY_STYLES = {
   CRITICAL: { bg: '#7f1d1d', border: '#ef4444', text: '#fca5a5', icon: '🔴' },
@@ -40,7 +41,7 @@ export default function AlertFeed({ token, refreshTrigger }) {
       const res = await fetch('http://127.0.0.1:8000/api/v1/alerts', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) throw new Error(data.detail || 'Failed to fetch alerts');
       setAlerts(data.alerts || []);
     } catch (err) {

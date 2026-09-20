@@ -23,6 +23,23 @@ export function isTokenExpired(token) {
   } catch { return true; }
 }
 
+export async function parseJsonResponse(res) {
+  const contentType = res.headers.get('content-type') || '';
+  const raw = await res.text();
+
+  if (!raw.trim()) return {};
+
+  if (!contentType.includes('application/json')) {
+    return { detail: raw.trim().slice(0, 300) };
+  }
+
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return { detail: 'The server returned an invalid JSON response.' };
+  }
+}
+
 export async function authFetch(url, options = {}) {
   const headers = { ...(options.headers || {}) };
   if (!headers.Authorization) {

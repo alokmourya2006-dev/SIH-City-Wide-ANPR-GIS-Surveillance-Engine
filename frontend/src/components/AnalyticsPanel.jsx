@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart3, CarFront, Bike, ShieldAlert } from 'lucide-react';
 import { subscribeDetections } from '../detectionBus';
+import { parseJsonResponse } from '../api';
 
 const SEVERITY_COLORS = { CRITICAL: '#ef4444', HIGH: '#f97316', MEDIUM: '#eab308', LOW: '#10b981' };
 
@@ -31,8 +32,10 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
           body: JSON.stringify({ start_time: oneHourAgo, end_time: now })
         })
       ]);
-      const odData = await odRes.json();
-      const congData = await congRes.json();
+      const [odData, congData] = await Promise.all([
+        parseJsonResponse(odRes),
+        parseJsonResponse(congRes),
+      ]);
       if (odRes.ok) setOdMatrix(odData);
       if (congRes.ok) setCongestion(congData);
     } catch (err) {

@@ -9,7 +9,7 @@ import LiveCameraFeed from './components/LiveCameraFeed';
 import CameraRegisterPanel from './components/CameraRegisterPanel';
 import MacroAnalytics from './components/MacroAnalytics';
 import WatchlistModal from './components/WatchlistModal';
-import { API_BASE, authFetch, isTokenExpired, clearStoredToken } from './api';
+import { API_BASE, authFetch, isTokenExpired, clearStoredToken, parseJsonResponse } from './api';
 import WebcamModal from './components/WebcamModal';
 import HeaderBar from './components/HeaderBar';
 import LiveFeedViewport from './components/LiveFeedViewport';
@@ -90,7 +90,7 @@ export default function App() {
     if (authToken) {
       try {
         const res = await authFetch(`${API_BASE}/api/v1/hotlist`, { headers: { 'Authorization': `Bearer ${authToken}` } });
-        const data = await res.json();
+        const data = await parseJsonResponse(res);
         if (res.ok) { setWatchlist(data.hotlist || []); return; }
       } catch { /* fall through to fallback */ }
     }
@@ -116,7 +116,7 @@ export default function App() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData,
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) throw new Error(data.detail || 'Authentication failed');
       
       localStorage.setItem('police_token', data.access_token);
@@ -142,7 +142,7 @@ export default function App() {
     try {
       const coordsString = trajectoryPoints.map(p => `${p.longitude},${p.latitude}`).join(';');
       const res = await fetch(`https://router.project-osrm.org/route/v1/driving/${coordsString}?overview=full&geometries=geojson`);
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
 
       if (data.routes && data.routes.length > 0) {
         const formattedCoords = data.routes[0].geometry.coordinates.map(coord => [coord[1], coord[0]]);
@@ -171,7 +171,7 @@ export default function App() {
         body: JSON.stringify({ plate_number: plateNumber, case_file_id: caseFileId })
       });
 
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) throw new Error(data.detail || 'Authorization Failed');
       
       // Sort hits chronologically so the route draws in capture order

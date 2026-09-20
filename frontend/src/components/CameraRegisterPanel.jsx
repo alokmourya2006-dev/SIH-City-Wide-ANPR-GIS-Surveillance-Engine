@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API_BASE, authFetch } from '../api';
+import { API_BASE, authFetch, parseJsonResponse } from '../api';
 const SECTORS = ['SECTOR_A', 'SECTOR_B', 'SECTOR_C', 'SECTOR_D'];
 const SOURCE_TYPES = ['WEBCAM', 'RTSP', 'FILE'];
 
@@ -65,7 +65,7 @@ export default function CameraRegisterPanel({ token, onRegistered }) {
           rtsp_url: form.rtsp_url.trim() || null
         })
       });
-      const data = await res.json();
+      const data = await parseJsonResponse(res);
       if (!res.ok) throw new Error(data.detail || 'Registration failed');
       setResult({
         msg: `✅ ${data.camera_id} registered. Run "python edge_pipeline.py --camera-id ${data.camera_id}" to go live.`,

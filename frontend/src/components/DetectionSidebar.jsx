@@ -2,6 +2,7 @@
 import { Bike, CarFront, Radio } from 'lucide-react';
 import { CAMERAS } from './CameraToolbar';
 import { publishDetection } from '../detectionBus';
+import { parseJsonResponse } from '../api';
 
 const PLATE_POOL = [
   'UP32KT2112', 'MH12DE1432', 'DL8CAF5010', 'GJ01RT8845',
@@ -131,7 +132,7 @@ export default function DetectionSidebar({ token, refreshTrigger, blacklist, max
         const res = await fetch('http://127.0.0.1:8000/api/v1/cameras/status', {
           headers: { Authorization: 'Bearer ' + token },
         });
-        const data = await res.json();
+        const data = await parseJsonResponse(res);
         if (cancelled || !res.ok) return;
         (data.cameras || []).forEach((cam) => {
           if (!cam.last_plate) return;
