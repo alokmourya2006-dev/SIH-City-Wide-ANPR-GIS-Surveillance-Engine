@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Video, VideoOff, Radio } from 'lucide-react';
-
-const API_BASE = 'http://127.0.0.1:8000';
+import { API_BASE, authFetch } from '../api';
 
 export default function LiveCameraFeed({ token, refreshTrigger }) {
   const [cameras, setCameras] = useState([]);
@@ -10,7 +9,7 @@ export default function LiveCameraFeed({ token, refreshTrigger }) {
   const fetchCameras = async () => {
     if (!token) return;
     try {
-      const res = await fetch(`${API_BASE}/api/v1/cameras/status`, {
+      const res = await authFetch(`${API_BASE}/api/v1/cameras/status`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();

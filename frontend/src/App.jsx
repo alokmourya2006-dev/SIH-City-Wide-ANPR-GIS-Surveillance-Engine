@@ -9,7 +9,7 @@ import LiveCameraFeed from './components/LiveCameraFeed';
 import CameraRegisterPanel from './components/CameraRegisterPanel';
 import MacroAnalytics from './components/MacroAnalytics';
 import WatchlistModal from './components/WatchlistModal';
-import { authFetch, isTokenExpired, clearStoredToken } from './api';
+import { API_BASE, authFetch, isTokenExpired, clearStoredToken } from './api';
 import WebcamModal from './components/WebcamModal';
 import HeaderBar from './components/HeaderBar';
 import LiveFeedViewport from './components/LiveFeedViewport';
@@ -89,7 +89,7 @@ export default function App() {
   const loadWatchlist = useCallback(async (authToken) => {
     if (authToken) {
       try {
-        const res = await authFetch('http://127.0.0.1:8000/api/v1/hotlist', { headers: { 'Authorization': `Bearer ${authToken}` } });
+        const res = await authFetch(`${API_BASE}/api/v1/hotlist`, { headers: { 'Authorization': `Bearer ${authToken}` } });
         const data = await res.json();
         if (res.ok) { setWatchlist(data.hotlist || []); return; }
       } catch { /* fall through to fallback */ }
@@ -111,7 +111,7 @@ export default function App() {
     formData.append('password', passwordInput);
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/v1/auth/login', {
+      const res = await fetch(`${API_BASE}/api/v1/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData,
@@ -162,7 +162,7 @@ export default function App() {
     setError('');
 
     try {
-      const res = await authFetch('http://127.0.0.1:8000/api/v1/trajectory/search', {
+      const res = await authFetch(`${API_BASE}/api/v1/trajectory/search`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

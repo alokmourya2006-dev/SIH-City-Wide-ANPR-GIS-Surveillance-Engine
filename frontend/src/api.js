@@ -2,7 +2,8 @@
 // - Auto-attaches the Bearer token from localStorage when not explicitly provided.
 // - On any 401 response: clears the stale token and fires 'auth:expired' so
 //   App.jsx can gracefully fall back to the login screen (no crash loops).
-export const API_BASE = 'http://127.0.0.1:8000';
+// Use the Vite proxy in development and allow deployments to provide a backend URL.
+export const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
 
 export function getStoredToken() {
   try { return localStorage.getItem('police_token') || ''; } catch { return ''; }
