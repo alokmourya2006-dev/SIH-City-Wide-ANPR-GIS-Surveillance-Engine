@@ -3,18 +3,54 @@
 
 /* ARGUS Design Tokens */
 :root {
+  --hud-bg: #030712;
   --surface: #0f172a;
   --surface-depth: #020617;
   --surface-strong: #000000;
-  --telemetry-blue: #2563eb;
-  --amber-warning: #f59e0b;
+  --telemetry-cyan: #06b6d4;
+  --telemetry-cyan-soft: rgba(6, 182, 212, 0.35);
+  --amber-warning: #fbbf24;
   --critical-red: #ef4444;
   --emerald-success: #10b981;
   --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(148, 163, 184, 0.18);
+  --glass-border: rgba(8, 145, 178, 0.5);
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
+}
+
+/* Cyber-Command HUD primitives: slate-900 surface, cyan-900/50 borders,
+   cyan glow only for active elements, crimson glow only for alerts. */
+.hud-panel {
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(8, 145, 178, 0.5);
+  border-radius: 0.75rem;
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+}
+
+.hud-glow {
+  box-shadow: 0 0 18px rgba(6, 182, 212, 0.18);
+}
+
+.hud-panel-alert {
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(239, 68, 68, 0.6);
+  border-radius: 0.75rem;
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.22);
+}
+
+/* Geometric Sphere design tokens — cyan HUD, matches --telemetry-cyan */
+:root {
+  --primary: 6, 182, 212;
+  --secondary: 34, 211, 238;
+  --sphere-rotation-duration: 240s;
+  --grid-pan-duration: 180s;
+  --core-glow-duration: 25s;
+  --wire-opacity: 0.75;
+  --wire-shadow: 70px;
+  --core-blur: 200px;
+  --parallax-depth: 35;
+  --lerp: 0.08;
 }
 
 :root,
@@ -62,8 +98,8 @@ body {
 
 /* Alert severity colors */
 .severity-CRITICAL { color: var(--critical-red); border-left: 3px solid var(--critical-red); }
-.severity-HIGH { color: var(--amber-warning); border-left: 3px solid var(--amber-warning); }
-.severity-MEDIUM { color: #facc15; border-left: 3px solid #facc15; }
+.severity-HIGH { color: #f87171; border-left: 3px solid #f87171; }
+.severity-MEDIUM { color: #fca5a5; border-left: 3px solid #b91c1c; }
 .severity-LOW { color: var(--emerald-success); border-left: 3px solid var(--emerald-success); }
 
 /* Status indicators */
@@ -115,4 +151,269 @@ body {
 
 ::-webkit-scrollbar-corner {
   background: #000000;
+}
+
+/* ============================================================
+   Geometric Sphere + SphereHero — keyframes & layer classes
+   (Tailwind v4 generates the utility classes inline; this block
+   covers the custom animation names + non-utility layer styles
+   that the sphere components depend on.)
+   ============================================================ */
+
+@keyframes sphereRotate {
+  from { rotate: 0deg 0deg; }
+  to   { rotate: 360deg 360deg; }
+}
+
+@keyframes gridPan {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+@keyframes coreGlow {
+  0%, 100% { scale: 1.0; opacity: 0.9; }
+  50%      { scale: 1.05; opacity: 1; }
+}
+
+/* ---------- shared sphere scaffolding ---------- */
+
+.sphere-bg-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sphere-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sphere-panning-grid {
+  background-size: 44px 44px;
+  animation: gridPan linear infinite;
+}
+
+.sphere-3d-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sphere-rotation {
+  position: absolute;
+  inset: 0;
+  /* animate the standalone `rotate` property (not `transform`) so the
+     rotation composes with — rather than flattens — the inner 3D ring
+     positions. */
+  animation: sphereRotate var(--sphere-rotation-duration, 240s) linear infinite;
+  /* CRITICAL for 3D: children keep their 3D transforms instead of flattening */
+  transform-style: preserve-3d;
+  will-change: rotate;
+}
+
+.sphere-wire-ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.sphere-equator {
+  position: absolute;
+  inset: 0;
+  border: 1px solid;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.25);
+}
+
+.sphere-core-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.sphere-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+}
+
+.sphere-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+}
+
+/* ---------- SphereHero-specific classes ---------- */
+
+.wireframe-line {
+  /* Meridian rings fill the 700px sphere box; parallels override
+     width/height/margins inline for their own radius. */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 700px;
+  height: 700px;
+  margin-left: -350px;
+  margin-top: -350px;
+  border: 1px solid rgba(var(--primary), 0.5);
+  border-radius: 50%;
+  opacity: var(--wire-opacity, 0.75);
+  box-shadow: 0 0 var(--wire-shadow, 70px) rgba(var(--primary), 0.18),
+    inset 0 0 var(--wire-shadow, 70px) rgba(var(--primary), 0.12);
+}
+
+.sphere-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Bulletproof centering: negative margins (immune to transform overrides),
+     unlike translate(-50%,-50%) which any inline transform wipes out. */
+  width: 700px;
+  height: 700px;
+  margin: -350px 0 0 -350px;
+  pointer-events: none;
+  /* CRITICAL for 3D: without perspective, ring rotateX/rotateY collapse flat */
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.core-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: coreGlow var(--core-glow-duration, 25s) ease-in-out infinite;
+}
+
+.panning-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-size: 40px 40px;
+  animation: gridPan var(--grid-pan-duration, 120s) linear infinite;
+}
+
+.noise-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-size: 200px;
+}
+
+.vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* ---------- hero content typography ---------- */
+
+.content-foreground {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #34d399 0%, #06b6d4 40%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #94a3b8;
+  max-width: 32rem;
+  margin: 1rem auto 0;
+  line-height: 1.6;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4, #0891b2);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  transition: box-shadow 0.2s, transform 0.1s;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(148, 163, 184, 0.5);
+  color: #e2e8f0;
+}
+
+
+
+/* ===== Login reveal (hover-to-authenticate) ===== */
+@keyframes loginRise {
+  from { opacity: 0; transform: translateY(26px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.login-rise {
+  animation: loginRise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.login-display-font {
+  font-family: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
 }

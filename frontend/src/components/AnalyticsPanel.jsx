@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { BarChart3, CarFront, Bike, ShieldAlert } from 'lucide-react';
 import { subscribeDetections } from '../detectionBus';
-
-const SEVERITY_COLORS = { CRITICAL: '#ef4444', HIGH: '#f97316', MEDIUM: '#eab308', LOW: '#10b981' };
 
 export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }) {
   const [odMatrix, setOdMatrix] = useState(null);
@@ -12,8 +10,12 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
   const [activeTab, setActiveTab] = useState('live');
   const [live, setLive] = useState({ cars: 0, bikes: 0, confSum: 0, confCount: 0, alerts: 0 });
 
-  const fetchAnalytics = async () => {
-    if (!token) return;
+  const fetchAnalytics = useCallback(async (signal) => {
+    if (!token) {
+      setOdMatrix(null);
+      setCongestion(null);
+      return;
+    }
     setLoading(true);
     setError('');
     const now = new Date().toISOString();
@@ -23,12 +25,14 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
         fetch('http://127.0.0.1:8000/api/v1/analytics/od-matrix', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-          body: JSON.stringify({ start_time: oneHourAgo, end_time: now })
+          body: JSON.stringify({ start_time: oneHourAgo, end_time: now }),
+          signal,
         }),
         fetch('http://127.0.0.1:8000/api/v1/analytics/congestion', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-          body: JSON.stringify({ start_time: oneHourAgo, end_time: now })
+          body: JSON.stringify({ start_time: oneHourAgo, end_time: now }),
+          signal,
         })
       ]);
       const odData = await odRes.json();
@@ -36,17 +40,21 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
       if (odRes.ok) setOdMatrix(odData);
       if (congRes.ok) setCongestion(congData);
     } catch (err) {
-      setError(err.message);
+      if (err.name !== 'AbortError') setError(err.message || 'Unable to load analytics');
     } finally {
-      setLoading(false);
+      if (!signal.aborted) setLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
-    fetchAnalytics();
-    const interval = setInterval(fetchAnalytics, 30000);
-    return () => clearInterval(interval);
-  }, [token, refreshTrigger]);
+    const controller = new AbortController();
+    fetchAnalytics(controller.signal);
+    const interval = setInterval(() => fetchAnalytics(controller.signal), 30000);
+    return () => {
+      controller.abort();
+      clearInterval(interval);
+    };
+  }, [fetchAnalytics, refreshTrigger]);
 
   // Subscribe to the live detection stream published by DetectionSidebar
   useEffect(() => subscribeDetections((det) => {
@@ -59,7 +67,7 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
     }));
   }), []);
 
-  const getColor = (ci) => ci > 80 ? '#ef4444' : ci > 60 ? '#f97316' : ci > 40 ? '#eab308' : '#10b981';
+  const getColor = (ci) => ci > 80 ? '#ef4444' : ci > 60 ? '#f87171' : ci > 40 ? '#b91c1c' : '#10b981';
 
   const renderLive = () => {
     const total = live.cars + live.bikes;
@@ -71,9 +79,9 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
           <div style={card}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#94a3b8' }}>
-              <CarFront size={13} color="#38bdf8" /> CARS
+              <CarFront size={13} color="#22d3ee" /> CARS
             </div>
-            <div style={{ fontSize: '22px', fontWeight: 'bold', color: '#e0f2fe' }}>{live.cars}</div>
+            <div style={{ fontSize: '22px', fontWeight: 'bold', color: '#cffafe' }}>{live.cars}</div>
           </div>
           <div style={card}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#94a3b8' }}>
@@ -84,10 +92,10 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
         </div>
         <div style={card}>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#94a3b8' }}>
-            <span>CAR SHARE</span><span style={{ color: '#38bdf8', fontWeight: 'bold' }}>{carPct.toFixed(1)}%</span>
+            <span>CAR SHARE</span><span style={{ color: '#22d3ee', fontWeight: 'bold' }}>{carPct.toFixed(1)}%</span>
           </div>
           <div style={{ width: '100%', height: '6px', backgroundColor: '#334155', borderRadius: '3px', overflow: 'hidden', marginTop: '6px' }}>
-            <div style={{ width: `${carPct}%`, height: '100%', backgroundColor: '#38bdf8', borderRadius: '3px' }} />
+            <div style={{ width: `${carPct}%`, height: '100%', backgroundColor: '#22d3ee', borderRadius: '3px' }} />
           </div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
@@ -115,7 +123,7 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
     const total = odMatrix.total_transitions || 0;
     return (
       <div>
-        <div style={{ fontSize: '11px', color: '#94a3b8', marginBottom: '8px' }}>Total Transitions: <span style={{ color: '#38bdf8', fontWeight: 'bold' }}>{total}</span></div>
+        <div style={{ fontSize: '11px', color: '#94a3b8', marginBottom: '8px' }}>Total Transitions: <span style={{ color: '#22d3ee', fontWeight: 'bold' }}>{total}</span></div>
         {Object.keys(matrix).length === 0 ? (
           <div style={{ color: '#64748b', fontSize: '12px', textAlign: 'center', padding: '20px' }}>No flow data available</div>
         ) : (
@@ -124,7 +132,7 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
               Object.entries(dsts).map(([dst, count]) => (
                 <div key={`${src}-${dst}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 8px', backgroundColor: '#1e293b', borderRadius: '4px' }}>
                   <span style={{ fontSize: '12px', color: '#94a3b8' }}>{src} → {dst}</span>
-                  <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#38bdf8' }}>{count}</span>
+                  <span style={{ fontSize: '12px', fontWeight: 'bold', color: '#22d3ee' }}>{count}</span>
                 </div>
               ))
             )}
@@ -168,13 +176,13 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
   return (
     <div className="glass-frame" style={{ padding: '16px', borderRadius: '8px', height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-        <BarChart3 size={18} color="#38bdf8" />
+        <BarChart3 size={18} color="#22d3ee" />
         <h3 style={{ fontSize: '14px', fontWeight: 'bold', margin: 0 }}>Analytics</h3>
       </div>
       <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
-        <button onClick={() => setActiveTab('live')} style={{ padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', backgroundColor: activeTab === 'live' ? '#2563eb' : '#334155', color: '#fff' }}>Live Stats</button>
-        <button onClick={() => setActiveTab('od')} style={{ padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', backgroundColor: activeTab === 'od' ? '#2563eb' : '#334155', color: '#fff' }}>OD Matrix</button>
-        <button onClick={() => setActiveTab('congestion')} style={{ padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', backgroundColor: activeTab === 'congestion' ? '#2563eb' : '#334155', color: '#fff' }}>Congestion</button>
+        <button onClick={() => setActiveTab('live')} style={{ padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', backgroundColor: activeTab === 'live' ? '#0891b2' : '#334155', color: '#fff' }}>Live Stats</button>
+        <button onClick={() => setActiveTab('od')} style={{ padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', backgroundColor: activeTab === 'od' ? '#0891b2' : '#334155', color: '#fff' }}>OD Matrix</button>
+        <button onClick={() => setActiveTab('congestion')} style={{ padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', backgroundColor: activeTab === 'congestion' ? '#0891b2' : '#334155', color: '#fff' }}>Congestion</button>
       </div>
       {error && <div style={{ backgroundColor: '#450a0a', color: '#fca5a5', padding: '8px', borderRadius: '4px', fontSize: '12px', marginBottom: '8px' }}>{error}</div>}
       {loading && !odMatrix && !congestion ? (

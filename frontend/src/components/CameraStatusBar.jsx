@@ -49,7 +49,7 @@ export default function CameraStatusBar({ token, refreshTrigger }) {
   return (
     <div className="glass-frame" style={{ padding: '12px 16px', borderRadius: '8px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-        <Camera size={16} color="#38bdf8" />
+        <Camera size={16} color="#22d3ee" />
         <span style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
           Camera Network Status
         </span>
@@ -97,7 +97,7 @@ export default function CameraStatusBar({ token, refreshTrigger }) {
               <div style={{ fontSize: '11px', fontWeight: 'bold', marginBottom: '2px' }}>{cam.name}</div>
               <div style={{ fontSize: '10px', color: '#94a3b8' }}>{cam.sector}</div>
               {cam.last_plate && (
-                <div style={{ fontSize: '10px', color: '#38bdf8', fontFamily: 'monospace', marginTop: '4px' }}>
+                <div style={{ fontSize: '10px', color: '#22d3ee', fontFamily: 'monospace', marginTop: '4px' }}>
                   {cam.last_plate}
                 </div>
               )}

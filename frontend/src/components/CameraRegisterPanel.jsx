@@ -85,7 +85,7 @@ export default function CameraRegisterPanel({ token, onRegistered }) {
   return (
     <div className="glass-frame" style={{ padding: '16px', borderRadius: '8px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-        <Video size={16} color="#38bdf8" />
+        <Video size={16} color="#22d3ee" />
         <span style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8' }}>
           Connect Camera
         </span>
@@ -149,7 +149,7 @@ export default function CameraRegisterPanel({ token, onRegistered }) {
           style={{
             width: '100%',
             padding: '9px',
-            backgroundColor: submitting ? '#075985' : '#0284c7',
+            backgroundColor: submitting ? '#155e75' : '#0e7490',
             color: '#fff',
             border: 'none',
             borderRadius: '5px',

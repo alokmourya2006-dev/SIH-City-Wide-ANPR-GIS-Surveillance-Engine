@@ -1,0 +1,87 @@
+
+> frontend@0.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v8.2.2[39m  [2mready in [0m[1m251[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m5:06:18 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m5:08:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m5:08:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m6:16:23 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m6:18:14 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m6:22:37 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m6:23:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m6:23:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m6:33:58 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m7:33:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m7:36:37 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx, /src/index.css[22m
+[2m7:36:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m7:37:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/ui/geometric-sphere.jsx[22m
+[2m7:37:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/ui/geometric-sphere.jsx[22m Could not Fast Refresh ("CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m7:37:15 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx[22m
+[2m8:00:48 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:03:21 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/ui/geometric-sphere.jsx[22m
+[2m8:03:21 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/ui/geometric-sphere.jsx[22m Could not Fast Refresh ("CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m8:03:21 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx[22m
+[2m8:04:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/ui/geometric-sphere.jsx[22m
+[2m8:04:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/ui/geometric-sphere.jsx[22m Could not Fast Refresh ("CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m8:04:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx[22m
+[2m8:39:19 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:39:22 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:39:22 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] C:/Users/Alok maurya/OneDrive/Desktop/SIH 127/frontend/src/index.css:257:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mC:/Users/Alok maurya/OneDrive/Desktop/SIH 127/frontend/src/index.css[39m:257:0
+[33m  255 |    margin: -350px 0 0 -350px;
+  256 |    pointer-events: none;
+  257 |  }
+      |  ^
+  258 |  
+  259 |  .core-light {[39m
+      at Input.error (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parser.js:597:22)
+      at Parser.end (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parser.js:466:16)
+      at parse (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///C:/Users/Alok%20maurya/OneDrive/Desktop/SIH%20127/frontend/node_modules/vite/dist/node/chunks/node.js:23223:66)
+      at async compilePostCSS (file:///C:/Users/Alok%20maurya/OneDrive/Desktop/SIH%20127/frontend/node_modules/vite/dist/node/chunks/node.js:23207:6)
+      at async compileCSS (file:///C:/Users/Alok%20maurya/OneDrive/Desktop/SIH%20127/frontend/node_modules/vite/dist/node/chunks/node.js:23137:26)
+[2m8:39:22 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] C:/Users/Alok maurya/OneDrive/Desktop/SIH 127/frontend/src/index.css:257:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mC:/Users/Alok maurya/OneDrive/Desktop/SIH 127/frontend/src/index.css[39m:257:0
+[33m  255 |    margin: -350px 0 0 -350px;
+  256 |    pointer-events: none;
+  257 |  }
+      |  ^
+  258 |  
+  259 |  .core-light {[39m
+      at Input.error (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parser.js:597:22)
+      at Parser.end (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parser.js:466:16)
+      at parse (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (C:\Users\Alok maurya\OneDrive\Desktop\SIH 127\frontend\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///C:/Users/Alok%20maurya/OneDrive/Desktop/SIH%20127/frontend/node_modules/vite/dist/node/chunks/node.js:23223:66)
+      at async compilePostCSS (file:///C:/Users/Alok%20maurya/OneDrive/Desktop/SIH%20127/frontend/node_modules/vite/dist/node/chunks/node.js:23207:6)
+      at async compileCSS (file:///C:/Users/Alok%20maurya/OneDrive/Desktop/SIH%20127/frontend/node_modules/vite/dist/node/chunks/node.js:23137:26)
+[2m8:40:00 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:40:02 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:40:43 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:40:46 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:40:47 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m8:48:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/ui/geometric-sphere.jsx[22m
+[2m8:48:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/ui/geometric-sphere.jsx[22m Could not Fast Refresh ("CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m8:48:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx[22m
+[2m8:48:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css, /src/components/ui/geometric-sphere.jsx[22m
+[2m8:48:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [33mhmr invalidate [39m[2m/src/components/ui/geometric-sphere.jsx[22m Could not Fast Refresh ("CONFIG" export is incompatible). Learn more at https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
+[2m8:48:51 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/Login.jsx[22m
+[2m9:11:33 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m9:11:35 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m9:11:36 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m
+[2m9:12:24 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/index.css[22m

@@ -82,9 +82,9 @@ function drawRoadScene(ctx, mode) {
     ctx.fillStyle = '#0a0f15';
     ctx.fillRect(W * 0.24, 0, W * 0.52, H);
     const road = ctx.createLinearGradient(W * 0.3, 0, W * 0.7, 0);
-    road.addColorStop(0, '#121a23');
+    road.addColorStop(0, '#0f172a');
     road.addColorStop(0.5, '#1b2530');
-    road.addColorStop(1, '#121a23');
+    road.addColorStop(1, '#0f172a');
     ctx.fillStyle = road;
     ctx.fillRect(W * 0.3, 0, W * 0.4, H);
     ctx.strokeStyle = 'rgba(226, 232, 240, 0.5)';
@@ -93,7 +93,7 @@ function drawRoadScene(ctx, mode) {
     ctx.moveTo(W * 0.315, 0); ctx.lineTo(W * 0.315, H);
     ctx.moveTo(W * 0.685, 0); ctx.lineTo(W * 0.685, H);
     ctx.stroke();
-    ctx.strokeStyle = 'rgba(250, 204, 21, 0.5)';
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.5)';
     ctx.lineWidth = 4;
     ctx.setLineDash([26, 22]);
     ctx.beginPath();
@@ -118,9 +118,9 @@ function drawRoadScene(ctx, mode) {
     ctx.fillRect(0, 0, W, H * 0.3);
     ctx.fillRect(0, H * 0.78, W, H * 0.22);
     const road = ctx.createLinearGradient(0, H * 0.3, 0, H * 0.78);
-    road.addColorStop(0, '#151d27');
+    road.addColorStop(0, '#0f172a');
     road.addColorStop(0.5, '#202b38');
-    road.addColorStop(1, '#151d27');
+    road.addColorStop(1, '#0f172a');
     ctx.fillStyle = road;
     ctx.fillRect(0, H * 0.3, W, H * 0.48);
     ctx.strokeStyle = 'rgba(226, 232, 240, 0.55)';
@@ -129,7 +129,7 @@ function drawRoadScene(ctx, mode) {
     ctx.moveTo(0, H * 0.315); ctx.lineTo(W, H * 0.315);
     ctx.moveTo(0, H * 0.775); ctx.lineTo(W, H * 0.775);
     ctx.stroke();
-    ctx.strokeStyle = 'rgba(250, 204, 21, 0.55)';
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.55)';
     ctx.lineWidth = 4;
     ctx.setLineDash([30, 24]);
     ctx.beginPath();
@@ -145,15 +145,15 @@ function drawRoadScene(ctx, mode) {
     ctx.fillRect(0, H * 0.3, W, H * 0.48);
   } else {
     const hRoad = ctx.createLinearGradient(0, H * 0.36, 0, H * 0.64);
-    hRoad.addColorStop(0, '#141c26');
-    hRoad.addColorStop(0.5, '#1e2936');
-    hRoad.addColorStop(1, '#141c26');
+    hRoad.addColorStop(0, '#0f172a');
+    hRoad.addColorStop(0.5, '#1e293b');
+    hRoad.addColorStop(1, '#0f172a');
     ctx.fillStyle = hRoad;
     ctx.fillRect(0, H * 0.36, W, H * 0.28);
     const vRoad = ctx.createLinearGradient(W * 0.36, 0, W * 0.64, 0);
-    vRoad.addColorStop(0, '#141c26');
-    vRoad.addColorStop(0.5, '#1e2936');
-    vRoad.addColorStop(1, '#141c26');
+    vRoad.addColorStop(0, '#0f172a');
+    vRoad.addColorStop(0.5, '#1e293b');
+    vRoad.addColorStop(1, '#0f172a');
     ctx.fillStyle = vRoad;
     ctx.fillRect(W * 0.36, 0, W * 0.28, H);
     ctx.fillStyle = 'rgba(30, 41, 59, 0.9)';
@@ -166,7 +166,7 @@ function drawRoadScene(ctx, mode) {
     ctx.moveTo(W * 0.375, 0); ctx.lineTo(W * 0.375, H);
     ctx.moveTo(W * 0.625, 0); ctx.lineTo(W * 0.625, H);
     ctx.stroke();
-    ctx.strokeStyle = 'rgba(250, 204, 21, 0.5)';
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.5)';
     ctx.lineWidth = 4;
     ctx.setLineDash([24, 20]);
     ctx.beginPath();
@@ -242,10 +242,10 @@ function drawVehicle(ctx, v) {
   ctx.stroke();
 
   if (v.type === 'CAR') {
-    ctx.fillStyle = 'rgba(125, 211, 252, 0.3)';
+    ctx.fillStyle = 'rgba(103, 232, 249, 0.3)';
     roundRectPath(ctx, -w2 + 4, -l2 + lpx * 0.3, wpx - 8, lpx * 0.32, 3);
     ctx.fill();
-    ctx.fillStyle = 'rgba(125, 211, 252, 0.15)';
+    ctx.fillStyle = 'rgba(103, 232, 249, 0.15)';
     roundRectPath(ctx, -w2 + 5, -l2 + lpx * 0.72, wpx - 10, lpx * 0.16, 2);
     ctx.fill();
   } else {
@@ -344,7 +344,7 @@ export default function LiveFeedViewport({ defaultCameraId = 'CAM-01' }) {
   };
 
   return (
-    <div className="relative bg-zinc-950 border border-slate-800/80 rounded-xl overflow-hidden flex-1 shadow-2xl flex flex-col min-h-[460px]">
+    <div className="relative bg-slate-950 border border-slate-800/80 rounded-xl overflow-hidden flex-1 shadow-2xl flex flex-col min-h-[460px]">
       <div className="flex items-center justify-between border-b border-slate-800/60 bg-slate-950/80 px-4 py-2.5">
         <div className="flex items-center gap-2">
           <Radio size={14} className="text-emerald-400" aria-hidden="true" />
@@ -353,7 +353,7 @@ export default function LiveFeedViewport({ defaultCameraId = 'CAM-01' }) {
           </span>
         </div>
         <div className="flex items-center gap-4 font-mono text-[10px]">
-          <span className="text-sky-300">TRACKS: {String(boxes.length).padStart(2, '0')}</span>
+          <span className="text-cyan-300">TRACKS: {String(boxes.length).padStart(2, '0')}</span>
           <span className="text-slate-500">DET-OVERLAY: ANPR / YOLO</span>
         </div>
       </div>

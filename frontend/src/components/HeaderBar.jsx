@@ -43,7 +43,7 @@ export default function HeaderBar({ activeCameras = 3, watchlistCount = 0, onOpe
 
         <div className="flex items-center gap-2 rounded-md border border-slate-800 bg-slate-900/70 px-2.5 py-1">
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-          <span className="font-mono text-xs font-semibold text-sky-300">
+          <span className="font-mono text-xs font-semibold text-cyan-300">
             CAM-ACTIVE: {String(activeCameras).padStart(2, '0')}
           </span>
         </div>
@@ -96,7 +96,7 @@ export default function HeaderBar({ activeCameras = 3, watchlistCount = 0, onOpe
             ANPR
           </span>
           <span className="flex items-center gap-1.5 text-[10px] font-mono text-slate-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-sky-500" aria-hidden="true" />
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" aria-hidden="true" />
             FEED
           </span>
         </div>

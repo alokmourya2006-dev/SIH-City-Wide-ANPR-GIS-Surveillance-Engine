@@ -67,12 +67,12 @@ function DetectionCard({ det }) {
           {det.plate}
         </span>
         <span className="flex items-center gap-1.5 rounded-md border border-slate-700/70 bg-slate-900/70 px-2 py-1 font-mono text-[10px] font-semibold tracking-widest text-slate-300">
-          <VehicleIcon size={13} className={det.vehicle === 'BIKE' ? 'text-amber-400' : 'text-sky-400'} aria-hidden="true" />
+          <VehicleIcon size={13} className={det.vehicle === 'BIKE' ? 'text-amber-400' : 'text-cyan-400'} aria-hidden="true" />
           {det.vehicle}
         </span>
       </div>
       <div className="mt-2 flex items-center justify-between font-mono text-[10px] tracking-widest">
-        <span className="text-sky-300">{det.cameraId}</span>
+        <span className="text-cyan-300">{det.cameraId}</span>
         <span className="tabular-nums text-slate-500">{formatDetTime(det.timestamp)}</span>
       </div>
       <ConfidenceBar value={det.conf} alert={alert} />

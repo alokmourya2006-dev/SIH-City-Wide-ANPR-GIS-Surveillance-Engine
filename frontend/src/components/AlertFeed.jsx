@@ -3,8 +3,8 @@ import { Bell } from 'lucide-react';
 
 const SEVERITY_STYLES = {
   CRITICAL: { bg: '#7f1d1d', border: '#ef4444', text: '#fca5a5', icon: '🔴' },
-  HIGH: { bg: '#7c2d12', border: '#f97316', text: '#fed7aa', icon: '🟠' },
-  MEDIUM: { bg: '#713f12', border: '#eab308', text: '#fef08a', icon: '🟡' },
+  HIGH: { bg: '#7f1d1d', border: '#f87171', text: '#fecaca', icon: '🟥' },
+  MEDIUM: { bg: '#450a0a', border: '#b91c1c', text: '#fca5a5', icon: '🟥' },
   LOW: { bg: '#143d2c', border: '#10b981', text: '#bbf7d0', icon: '🟢' },
 };
 
@@ -61,7 +61,7 @@ export default function AlertFeed({ token, refreshTrigger }) {
   return (
     <div className="glass-frame" style={{ padding: '16px', borderRadius: '8px', height: '100%', display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-        <Bell size={18} color="#38bdf8" />
+        <Bell size={18} color="#22d3ee" />
         <h3 style={{ fontSize: '14px', fontWeight: 'bold', margin: 0 }}>Active Alerts</h3>
         {alerts.length > 0 && (
           <span style={{ fontSize: '10px', backgroundColor: '#ef4444', color: '#fff', padding: '2px 6px', borderRadius: '10px' }}>

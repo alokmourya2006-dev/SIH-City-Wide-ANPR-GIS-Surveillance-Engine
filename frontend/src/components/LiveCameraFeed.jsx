@@ -141,7 +141,7 @@ export default function LiveCameraFeed({ token, refreshTrigger }) {
       {cameras.length > 0 && liveCams.length === 0 && (
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#64748b', fontSize: '12px', padding: '8px 0' }}>
           <Video size={14} color="#64748b" />
-          No camera streaming yet — run <code style={{ color: '#38bdf8' }}>python edge_pipeline.py</code> in the backend folder to go live.
+          No camera streaming yet — run <code style={{ color: '#22d3ee' }}>python edge_pipeline.py</code> in the backend folder to go live.
         </div>
       )}
     </div>

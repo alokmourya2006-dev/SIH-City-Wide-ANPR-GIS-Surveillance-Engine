@@ -7,8 +7,8 @@ const SEVERITIES = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
 
 const SEV_STYLES = {
   CRITICAL: 'border-red-500/60 bg-red-500/10 text-red-300',
-  HIGH: 'border-orange-500/60 bg-orange-500/10 text-orange-300',
-  MEDIUM: 'border-yellow-500/60 bg-yellow-500/10 text-yellow-300',
+  HIGH: 'border-red-400/60 bg-red-400/10 text-red-300',
+  MEDIUM: 'border-red-700/60 bg-red-700/10 text-red-300',
   LOW: 'border-emerald-500/60 bg-emerald-500/10 text-emerald-300',
 };
 

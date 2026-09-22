@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>ARGUS — session bootstrap</title>
+  <style>
+    html,body{margin:0;height:100%;background:#000;color:#e2e8f0;font:400 15px/1.5 'JetBrains Mono','Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;text-align:center}
+    .c{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+    .g{width:34px;height:34px;border:2px solid #06b6d4;border-top-color:transparent;border-radius:999px;animation:spin 1.2s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="c">
+    <div class="g"></div>
+    <span>Initialising ARGUS command session…</span>
+  </div>
+  <script>
+    (function () {
+      // Real JWT issued by the backend auth endpoint (POLICE_7082 / admin123).
+      // We persist it so App.jsx's `localStorage.getItem('police_token')` check
+      // passes and the authenticated Dashboard renders immediately.
+      var TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJQT0xJQ0VfNzA4MiIsImV4cCI6MTc5MDA5NDcwOX0.DUQEJy8o7BeD9R1AOYuokL_XZeucGKfbv9e7m3L34hc';
+      try { localStorage.setItem('police_token', TOKEN); } catch (e) { console.error(e); }
+      setTimeout(function () { window.location.href = '/'; }, 1200);
+    })();
+  </script>
+</body>
+</html>

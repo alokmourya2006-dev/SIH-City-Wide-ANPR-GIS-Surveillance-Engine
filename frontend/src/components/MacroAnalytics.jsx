@@ -5,7 +5,7 @@ const card = { background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(12px)', p
 const pill = { display: 'flex', alignItems: 'center', background: '#020617', padding: '4px', borderRadius: '8px', border: '1px solid #1e293b', fontFamily: 'monospace', fontSize: '12px' };
 const tbtn = (active, clr) => ({ padding: '2px 8px', borderRadius: '4px', background: active ? clr : 'transparent', color: active ? '#fff' : '#94a3b8', border: 'none', cursor: 'pointer', fontWeight: active ? 700 : 400 });
 const obsColor = kmh => kmh < 20 ? '#f87171' : kmh < 35 ? '#fbbf24' : '#34d399';
-const ciBar = ci => ci >= 0.7 ? '#ef4444' : ci >= 0.3 ? '#f59e0b' : '#10b981';
+const ciBar = ci => ci >= 0.7 ? '#ef4444' : ci >= 0.3 ? '#fbbf24' : '#10b981';
 const sectors = [{ id: 'SEC_01', name: 'Gomti Nagar' }, { id: 'SEC_02', name: 'Hazratganj' }, { id: 'SEC_03', name: 'Charbagh' }, { id: 'SEC_04', name: 'Alambagh' }, { id: 'SEC_05', name: 'Indira Nagar' }];
 
 export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = ['1H', '3H', '12H', '24H'] }) {
@@ -37,9 +37,9 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
     return true;
   });
   function getCellHeatStyle(count) {
-    if (count > 1500) return { background: 'rgba(37,99,235,0.80)', color: '#fff', fontWeight: 700, border: '1px solid rgba(96,165,250,0.5)' };
-    if (count > 1000) return { background: 'rgba(37,99,235,0.50)', color: '#dbeafe', border: '1px solid rgba(59,130,246,0.30)' };
-    if (count > 500) return { background: 'rgba(30,58,138,0.40)', color: '#93c5fd', border: '1px solid rgba(30,64,175,0.40)' };
+    if (count > 1500) return { background: 'rgba(8, 145, 178, 0.80)', color: '#fff', fontWeight: 700, border: '1px solid rgba(34, 211, 238, 0.5)' };
+    if (count > 1000) return { background: 'rgba(8, 145, 178, 0.50)', color: '#cffafe', border: '1px solid rgba(34, 211, 238, 0.30)' };
+    if (count > 500) return { background: 'rgba(30,58,138,0.40)', color: '#67e8f9', border: '1px solid rgba(30,64,175,0.40)' };
     return { background: 'rgba(15,23,42,0.60)', color: '#94a3b8', border: '1px solid #1e293b' };
   }
   return (
@@ -47,16 +47,16 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
       <div style={{ ...card, display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <BarChart3 size={20} color="#60a5fa" />
+            <BarChart3 size={20} color="#22d3ee" />
             <h2 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'monospace', margin: 0, color: '#fff' }}>MACRO TRAFFIC ANALYTICS &amp; OD FLOWS</h2>
-            <span style={{ fontSize: '10px', fontFamily: 'monospace', padding: '2px 8px', borderRadius: '4px', backgroundColor: 'rgba(59,130,246,0.1)', color: '#60a5fa', border: '1px solid rgba(59,130,246,0.2)' }}>ASYNC CONTINUOUS AGGREGATES</span>
+            <span style={{ fontSize: '10px', fontFamily: 'monospace', padding: '2px 8px', borderRadius: '4px', backgroundColor: 'rgba(34, 211, 238, 0.1)', color: '#22d3ee', border: '1px solid rgba(34, 211, 238, 0.2)' }}>ASYNC CONTINUOUS AGGREGATES</span>
           </div>
           <p style={{ fontSize: '12px', fontFamily: 'monospace', color: '#94a3b8', margin: '4px 0 0' }}>TimescaleDB Continuous Views + Uber H3 Spatial Density Aggregation</p>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }}>
           <div style={pill}>
             {timeWindows.map((h) => (
-              <button key={h} onClick={() => setTimeHorizon(h)} style={tbtn(timeHorizon === h, '#2563eb')}>{h}</button>
+              <button key={h} onClick={() => setTimeHorizon(h)} style={tbtn(timeHorizon === h, '#0891b2')}>{h}</button>
             ))}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontFamily: 'monospace', fontSize: '12px', backgroundColor: '#020617', padding: '6px 12px', borderRadius: '8px', border: '1px solid #1e293b' }}>
@@ -71,7 +71,7 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
       <div style={card}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Grid size={16} color="#60a5fa" />
+            <Grid size={16} color="#22d3ee" />
             <h3 style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 700, margin: 0 }}>INTER-SECTOR OD FLOW MATRIX ({timeHorizon} WINDOW)</h3>
           </div>
           <span style={{ fontSize: '11px', fontFamily: 'monospace', color: '#94a3b8' }}>Values = Vehicle Count (hover for stats, click to pin)</span>
@@ -82,14 +82,14 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
               <tr>
                 <th style={{ padding: '8px', border: '1px solid #1e293b', backgroundColor: '#020617', color: '#64748b', textAlign: 'left', minWidth: '140px', fontWeight: 400 }}>ORIGIN \ DEST</th>
                 {sectors.map((s) => (
-                  <th key={s.id} style={{ padding: '8px', border: '1px solid #1e293b', backgroundColor: '#020617', color: '#60a5fa', minWidth: '110px' }}>{s.name}</th>
+                  <th key={s.id} style={{ padding: '8px', border: '1px solid #1e293b', backgroundColor: '#020617', color: '#22d3ee', minWidth: '110px' }}>{s.name}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {sectors.map((orig) => (
                 <tr key={orig.id}>
-                  <td style={{ padding: '8px', border: '1px solid #1e293b', backgroundColor: '#020617', textAlign: 'left', fontWeight: 700, color: '#60a5fa' }}>{orig.name}</td>
+                  <td style={{ padding: '8px', border: '1px solid #1e293b', backgroundColor: '#020617', textAlign: 'left', fontWeight: 700, color: '#22d3ee' }}>{orig.name}</td>
                   {sectors.map((dest) => {
                     const cell = (odMatrixData[orig.id] && odMatrixData[orig.id][dest.id]) || { count: 0, avgMin: 0, avgKm: 0 };
                     const isSelf = orig.id === dest.id;
@@ -101,7 +101,7 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
                         <div style={{ fontSize: '10px', opacity: 0.75 }}>{cell.avgMin}m | {cell.avgKm}km</div>
                         {hov && !isSelf && (
                           <div style={{ position: 'absolute', bottom: '100%', left: '50%', transform: 'translateX(-50%)', marginBottom: '8px', display: 'flex', flexDirection: 'column', backgroundColor: '#0f172a', border: '1px solid #334155', padding: '8px', borderRadius: '6px', zIndex: 30, fontSize: '10px', whiteSpace: 'nowrap', textAlign: 'left', color: '#e2e8f0' }}>
-                            <span style={{ fontWeight: 700, color: '#60a5fa' }}>{orig.name} =&gt; {dest.name}</span>
+                            <span style={{ fontWeight: 700, color: '#22d3ee' }}>{orig.name} =&gt; {dest.name}</span>
                             <span>Volume: {cell.count} vehicles</span>
                             <span>Avg Transit: {cell.avgMin} mins</span>
                             <span>Avg Distance: {cell.avgKm} km</span>
@@ -119,7 +119,7 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
           <div style={{ padding: '12px', backgroundColor: '#020617', borderRadius: '8px', border: '1px solid #1e293b', display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontFamily: 'monospace', fontSize: '12px', marginTop: '12px', flexWrap: 'wrap', gap: '8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
               <Zap size={16} color="#fbbf24" />
-              <span>Selected Corridor: <strong style={{ color: '#60a5fa' }}>{selectedCell.origin} =&gt; {selectedCell.dest}</strong></span>
+              <span>Selected Corridor: <strong style={{ color: '#22d3ee' }}>{selectedCell.origin} =&gt; {selectedCell.dest}</strong></span>
               <span style={{ color: '#475569' }}>|</span>
               <span>Volume: <strong style={{ color: '#fff' }}>{selectedCell.count} trips</strong></span>
               <span style={{ color: '#475569' }}>|</span>
@@ -137,7 +137,7 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
           </div>
           <div style={{ ...pill, alignItems: 'center', gap: '4px' }}>
             <Filter size={14} color="#64748b" style={{ marginLeft: '4px' }} />
-            <button onClick={() => setCongestionFilter('ALL')} style={tbtn(congestionFilter === 'ALL', '#2563eb')}>ALL ({segmentData.length})</button>
+            <button onClick={() => setCongestionFilter('ALL')} style={tbtn(congestionFilter === 'ALL', '#0891b2')}>ALL ({segmentData.length})</button>
             <button onClick={() => setCongestionFilter('RED')} style={tbtn(congestionFilter === 'RED', '#dc2626')}>RED ({redCount})</button>
             <button onClick={() => setCongestionFilter('AMBER')} style={tbtn(congestionFilter === 'AMBER', '#d97706')}>AMBER ({amberCount})</button>
           </div>
@@ -178,7 +178,7 @@ export default function MacroAnalytics({ odFlow, liveCongestion, timeWindows = [
                     {seg.status === 'RED_BOTTLENECK' ? (
                       <span style={{ padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, backgroundColor: 'rgba(239,68,68,0.2)', color: '#f87171', border: '1px solid rgba(239,68,68,0.4)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><AlertTriangle size={12} /> RED BOTTLENECK</span>
                     ) : seg.status === 'AMBER_SLOWDOWN' ? (
-                      <span style={{ padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, backgroundColor: 'rgba(245,158,11,0.2)', color: '#fbbf24', border: '1px solid rgba(245,158,11,0.4)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><AlertCircle size={12} /> SLOWDOWN</span>
+                      <span style={{ padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, backgroundColor: 'rgba(251, 191, 36, 0.2)', color: '#fbbf24', border: '1px solid rgba(251, 191, 36, 0.4)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><AlertCircle size={12} /> SLOWDOWN</span>
                     ) : (
                       <span style={{ padding: '4px 10px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, backgroundColor: 'rgba(16,185,129,0.2)', color: '#34d399', border: '1px solid rgba(16,185,129,0.4)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}><CheckCircle2 size={12} /> FREE FLOW</span>
                     )}
