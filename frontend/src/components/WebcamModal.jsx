@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Camera, Scan, Square, X } from 'lucide-react';
 import { publishDetection } from '../detectionBus';
 
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://sih-city-wide-anpr-gis-surveillance.onrender.com';
 const norm = (p) => String(p || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 
 // Backend pixel bbox [x1,y1,x2,y2] -> % of frame (for overlay positioning)

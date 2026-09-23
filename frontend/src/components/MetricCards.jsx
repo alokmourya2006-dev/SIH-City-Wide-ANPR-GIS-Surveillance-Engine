@@ -12,7 +12,7 @@ export default function MetricCards({ token, watchlist = [] }) {
     let alive = true;
     const fetchCameras = async () => {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/v1/cameras/status', {
+        const res = await fetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/cameras/status', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

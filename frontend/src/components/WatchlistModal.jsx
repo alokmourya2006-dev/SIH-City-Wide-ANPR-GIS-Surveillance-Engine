@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { AlertTriangle, Plus, ShieldAlert, Trash2, X } from 'lucide-react';
 
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://sih-city-wide-anpr-gis-surveillance.onrender.com';
 
 const SEVERITIES = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
 

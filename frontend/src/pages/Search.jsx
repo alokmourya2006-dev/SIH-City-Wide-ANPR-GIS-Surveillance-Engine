@@ -61,7 +61,7 @@ export default function Search() {
     setLoading(true);
     setError('');
     try {
-      const res = await authFetch('http://127.0.0.1:8000/api/v1/trajectory/search', {
+      const res = await authFetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/trajectory/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ plate_number: plateNumber, case_file_id: caseFileId }),

@@ -37,7 +37,7 @@ export default function AlertFeed({ token, refreshTrigger }) {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/v1/alerts', {
+      const res = await fetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/alerts', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();

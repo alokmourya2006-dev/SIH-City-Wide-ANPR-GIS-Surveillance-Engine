@@ -48,7 +48,7 @@ export default function App() {
   const loadWatchlist = useCallback(async (authToken) => {
     if (authToken) {
       try {
-        const res = await authFetch('http://127.0.0.1:8000/api/v1/hotlist', { headers: { 'Authorization': `Bearer ${authToken}` } });
+        const res = await authFetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/hotlist', { headers: { 'Authorization': `Bearer ${authToken}` } });
         const data = await res.json();
         if (res.ok) { setWatchlist(data.hotlist || []); return; }
       } catch { /* fall through to fallback */ }
@@ -73,7 +73,7 @@ export default function App() {
     formData.append('password', passwordInput);
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/v1/auth/login', {
+      const res = await fetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData,

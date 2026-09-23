@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { PlusCircle, Video, Loader2 } from 'lucide-react';
 
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://sih-city-wide-anpr-gis-surveillance.onrender.com';
 const SECTORS = ['SECTOR_A', 'SECTOR_B', 'SECTOR_C', 'SECTOR_D'];
 const SOURCE_TYPES = ['WEBCAM', 'RTSP', 'FILE'];
 

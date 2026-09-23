@@ -22,13 +22,13 @@ export default function AnalyticsPanel({ token, refreshTrigger, watchlist = [] }
     const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
     try {
       const [odRes, congRes] = await Promise.all([
-        fetch('http://127.0.0.1:8000/api/v1/analytics/od-matrix', {
+        fetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/analytics/od-matrix', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
           body: JSON.stringify({ start_time: oneHourAgo, end_time: now }),
           signal,
         }),
-        fetch('http://127.0.0.1:8000/api/v1/analytics/congestion', {
+        fetch('https://sih-city-wide-anpr-gis-surveillance.onrender.com/api/v1/analytics/congestion', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
           body: JSON.stringify({ start_time: oneHourAgo, end_time: now }),

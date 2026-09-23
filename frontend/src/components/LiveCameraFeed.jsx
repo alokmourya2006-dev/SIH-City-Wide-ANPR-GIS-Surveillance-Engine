@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Video, VideoOff, Radio } from 'lucide-react';
 
-const API_BASE = 'http://127.0.0.1:8000';
+const API_BASE = 'https://sih-city-wide-anpr-gis-surveillance.onrender.com';
 
 export default function LiveCameraFeed({ token, refreshTrigger }) {
   const [cameras, setCameras] = useState([]);
